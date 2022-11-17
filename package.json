@@ -1,0 +1,16 @@
+{
+  "name": "decentralized_autonomous_organization",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.4",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@openzeppelin/contracts": "^4.4.2",
+    "hardhat": "^2.12.2"
+  },
+  "scripts": {
+    "deploy": "npx hardhat run scripts/deploy.js --network localhost",
+    "createProposal": "npx hardhat run scripts/create_proposal.js --network localhost",
+    "hardhatNode": "npx hardhat node"
+  }
+}
