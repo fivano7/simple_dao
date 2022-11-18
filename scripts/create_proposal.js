@@ -13,7 +13,7 @@ const { address: treasuryAddress } = require(__dirname + "/../contractsData/Trea
 const { abi: treasuryAbi } = require(__dirname + "/../contractsData/Treasury.json")
 
 //--create_proposal.js--
-//glasači na tokenu zovu funkciju koja im dava mogućnost glasovanja. Na governance contract se spaja proposer i šalje 4 parametra - 
+//glasači na tokenu zovu funkciju koja im dava mogućnost glasovanja. Na governance contract se spaja executor i šalje 4 parametra - 
 //1.) koja je adresa contracta/contracata koje želi izvršiti u svom proposalu 2.) ? 3.) enkodirana funckija koja će se izvršiti
 //na tom contractu 4.) naziv prijedloga (string). To vraća proposalId koji se onda koristi za provjeru stanja proposala koji može biti
 //=> executed, canceled, pending, active, succeded, defeated. Nakon toga ispisujemo podatke o glasovanju i spajamo se s walletima i
@@ -29,7 +29,7 @@ async function main() {
     const treasuryInstance = new ethers.Contract(treasuryAddress, treasuryAbi, ethers.provider)
 
     let isReleased, blocknumber, proposalState, vote
-    const [contractDeployer, timeLockAdmin, executor, proposer, voter1, voter2, voter3, voter4, voter5] = await ethers.getSigners()
+    const [contractDeployer, timeLockAdmin, executor, payee, proposer, voter1, voter2, voter3, voter4, voter5] = await ethers.getSigners()
 
     amount = ethers.utils.parseEther("5")
 

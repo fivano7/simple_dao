@@ -18,7 +18,7 @@ async function main() {
   const Governance = await ethers.getContractFactory("Governance")
   const Treasury = await ethers.getContractFactory("Treasury")
 
-  const [contractDeployer, timeLockAdmin, executor, proposer, voter1, voter2, voter3, voter4, voter5] = await ethers.getSigners()
+  const [contractDeployer, timeLockAdmin, executor, payee, proposer, voter1, voter2, voter3, voter4, voter5] = await ethers.getSigners()
   const name = "CRO Token"
   const symbol = "CRO"
   const supply = ethers.utils.parseEther("1000");
@@ -54,7 +54,7 @@ async function main() {
   //Kada je prijedlog uspješan i izvršen TimeLock contract će zvati funkciju na njemu
 
   let funds = ethers.utils.parseEther("25");
-  const treasuryInstance = await Treasury.deploy(executor.address, { value: funds }) //executor je primatelj uplace (payee)
+  const treasuryInstance = await Treasury.deploy(payee.address, { value: funds }) //payee je primatelj uplate
 
   //funkcija na Ownable, sa executora jer je on address[0], pa deploya
   //onda samo timeLock contract može zvati releaseFunds funkciju

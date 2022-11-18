@@ -3,6 +3,8 @@ pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+
+//Vlasnik treasurya postaje TimeLock contract
 contract Treasury is Ownable {
     uint256 public totalFunds;
     address public payee;
